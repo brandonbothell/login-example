@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.profile-pic {
+  margin-right: 5px;
+}
