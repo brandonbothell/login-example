@@ -55,6 +55,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prisma", "npm:5.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:18.2.0"],\
+            ["react-social-icons", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:5.15.0"],\
             ["superjson", "npm:1.12.2"],\
             ["tailwindcss", "npm:3.3.3"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"],\
@@ -4199,6 +4200,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prisma", "npm:5.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:18.2.0"],\
+            ["react-social-icons", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:5.15.0"],\
             ["superjson", "npm:1.12.2"],\
             ["tailwindcss", "npm:3.3.3"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"],\
@@ -5461,6 +5463,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-f7a19ac349.zip/node_modules/react-is/",\
           "packageDependencies": [\
             ["react-is", "npm:16.13.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-social-icons", [\
+        ["npm:5.15.0", {\
+          "packageLocation": "./.yarn/cache/react-social-icons-npm-5.15.0-17aa291c0e-b93d2ca603.zip/node_modules/react-social-icons/",\
+          "packageDependencies": [\
+            ["react-social-icons", "npm:5.15.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:5.15.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-social-icons-virtual-2821adaf3f/0/cache/react-social-icons-npm-5.15.0-17aa291c0e-b93d2ca603.zip/node_modules/react-social-icons/",\
+          "packageDependencies": [\
+            ["react-social-icons", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:5.15.0"],\
+            ["@types/react", "npm:18.2.17"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\

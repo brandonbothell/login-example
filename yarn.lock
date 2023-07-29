@@ -3302,6 +3302,7 @@ __metadata:
     prisma: ^5.0.0
     react: 18.2.0
     react-dom: 18.2.0
+    react-social-icons: ^5.15.0
     superjson: 1.12.2
     tailwindcss: ^3.3.0
     typescript: ^5.0.4
@@ -4286,7 +4287,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -4344,6 +4345,17 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-social-icons@npm:^5.15.0":
+  version: 5.15.0
+  resolution: "react-social-icons@npm:5.15.0"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: 15.x.x || 16.x.x || 17.x.x || 18.x.x
+  checksum: b93d2ca603f24825424a44a996215af261868247897bfced1ca37f8ab9dbceb14f73ed399e49b18c9f3d77faf7aad6b5f577553dc13e435d4c3bbb21bc08c278
   languageName: node
   linkType: hard
 

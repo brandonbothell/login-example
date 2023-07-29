@@ -23,6 +23,7 @@
     "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-social-icons": "^5.15.0",
     "superjson": "1.12.2",
     "zod": "^3.21.4"
   },

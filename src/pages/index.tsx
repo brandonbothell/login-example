@@ -67,12 +67,12 @@ function AuthShowcase() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.image ?
+        {sessionData && <span>Logged in as {sessionData.user?.image &&
           <Image
             className="rounded-full inline profile-pic ring-2"
             src={sessionData.user?.image} width={30} height={30}
             alt="Profile picture"
-          /> : null}{sessionData.user?.name}</span>}
+          />}{sessionData.user?.name}</span>}
         {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button
@@ -81,6 +81,10 @@ function AuthShowcase() {
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>
+
+      {sessionData && <Link href="/auth/linkaccount"><button
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+      >Link account</button></Link>}
     </div>
   );
 }
