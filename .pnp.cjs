@@ -49,6 +49,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:13.4.12"],\
             ["next", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:13.4.12"],\
             ["next-auth", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:4.22.3"],\
+            ["nextjs-progressbar", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:0.0.16"],\
             ["postcss", "npm:8.4.27"],\
             ["prettier", "npm:2.8.8"],\
             ["prettier-plugin-tailwindcss", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:0.2.8"],\
@@ -875,6 +876,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-20.4.5-7555fad0d4-36a0304a8d.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:20.4.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/nprogress", [\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/@types-nprogress-npm-0.2.0-cd184ad8ed-5613847750.zip/node_modules/@types/nprogress/",\
+          "packageDependencies": [\
+            ["@types/nprogress", "npm:0.2.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4194,6 +4204,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:13.4.12"],\
             ["next", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:13.4.12"],\
             ["next-auth", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:4.22.3"],\
+            ["nextjs-progressbar", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:0.0.16"],\
             ["postcss", "npm:8.4.27"],\
             ["prettier", "npm:2.8.8"],\
             ["prettier-plugin-tailwindcss", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:0.2.8"],\
@@ -4623,6 +4634,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["nextjs-progressbar", [\
+        ["npm:0.0.16", {\
+          "packageLocation": "./.yarn/cache/nextjs-progressbar-npm-0.0.16-63ea303e14-b75f7bd1f3.zip/node_modules/nextjs-progressbar/",\
+          "packageDependencies": [\
+            ["nextjs-progressbar", "npm:0.0.16"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:0.0.16", {\
+          "packageLocation": "./.yarn/__virtual__/nextjs-progressbar-virtual-60e0e3885c/0/cache/nextjs-progressbar-npm-0.0.16-63ea303e14-b75f7bd1f3.zip/node_modules/nextjs-progressbar/",\
+          "packageDependencies": [\
+            ["nextjs-progressbar", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:0.0.16"],\
+            ["@types/next", null],\
+            ["@types/nprogress", "npm:0.2.0"],\
+            ["@types/react", "npm:18.2.17"],\
+            ["next", "virtual:da879f7ee71f505f4cd0e6a0bef15538c06475aaf5f39c31bd94ffe55bd123033ec478bce98678e85db4cc93309089be297280f52853d1a14499cbe1597302a9#npm:13.4.12"],\
+            ["nprogress", "npm:0.2.0"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/next",\
+            "@types/react",\
+            "next",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["node-gyp", [\
         ["npm:9.4.0", {\
           "packageLocation": "./.yarn/unplugged/node-gyp-npm-9.4.0-ebf5f5573e/node_modules/node-gyp/",\
@@ -4716,6 +4756,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["console-control-strings", "npm:1.1.0"],\
             ["gauge", "npm:4.0.4"],\
             ["set-blocking", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["nprogress", [\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/nprogress-npm-0.2.0-c1c0973624-66b7bec5d5.zip/node_modules/nprogress/",\
+          "packageDependencies": [\
+            ["nprogress", "npm:0.2.0"]\
           ],\
           "linkType": "HARD"\
         }]\

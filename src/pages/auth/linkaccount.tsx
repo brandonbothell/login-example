@@ -1,4 +1,5 @@
 import { signIn, getProviders, getCsrfToken } from 'next-auth/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { type InferGetServerSidePropsType, type GetServerSidePropsContext } from 'next/types'
@@ -6,6 +7,7 @@ import { useState } from 'react'
 import { SocialIcon } from 'react-social-icons'
 import { getServerAuthSession } from '~/server/auth'
 import { prisma } from '~/server/db'
+import NetworkSvg from 'public/network.svg'
 
 const LinkAccount = ({ csrfToken, providers, alreadyLinkedProviders }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -33,8 +35,9 @@ const LinkAccount = ({ csrfToken, providers, alreadyLinkedProviders }:
       {/* Left column container with background */}
       <div
         className="mb-12 sm:mb-6 mr-0 w-3/5 h-3/5 sm:w-2/5 sm:h-2/5 lg:w-1/3 inline-flex justify-center">
-        <img
-          src="/network.svg"
+        <Image
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          src={NetworkSvg}
           className="w-3/5"
           alt="Login image" />
       </div>
@@ -102,7 +105,7 @@ export async function getServerSideProps(ctx: {
     props: {
       providers,
       csrfToken,
-      alreadyLinkedProviders: alreadyLinkedProviders ?? []
+      alreadyLinkedProviders: alreadyLinkedProviders
     },
   }
 }
