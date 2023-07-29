@@ -32,15 +32,15 @@ const LinkAccount = ({ csrfToken, providers, alreadyLinkedProviders }:
     <main className="flex min-h-screen flex-col sm:flex-row items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
       {/* Left column container with background */}
       <div
-        className="mb-12 sm:mb-6 mr-0 w-3/5 h-3/5 sm:w-2/5 sm:h-2/5 inline-flex justify-center">
+        className="mb-12 sm:mb-6 mr-0 w-3/5 h-3/5 sm:w-2/5 sm:h-2/5 lg:w-1/3 inline-flex justify-center">
         <img
           src="/network.svg"
-          className="w-3/4"
+          className="w-3/5"
           alt="Login image" />
       </div>
 
       {/* Right column container */}
-      <div className="w-2/3 sm:w-2/5 flex flex-col items-center">
+      <div className="w-2/3 sm:w-2/5 lg:w-1/4 flex flex-col items-center">
         {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-4 rounded relative" role="alert">
           <strong className="font-bold">Error</strong>
           <span className="block">{error.join(' ')}</span>
