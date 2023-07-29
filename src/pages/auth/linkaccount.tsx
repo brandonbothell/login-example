@@ -34,7 +34,7 @@ const LinkAccount = ({ csrfToken, providers, alreadyLinkedProviders }:
       <div
         className="mb-12 sm:mb-6 mr-0 w-3/5 h-3/5 sm:w-2/5 sm:h-2/5 inline-flex justify-center">
         <img
-          src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          src="/network.svg"
           className="w-3/4"
           alt="Login image" />
       </div>
