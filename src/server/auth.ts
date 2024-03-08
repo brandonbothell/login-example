@@ -12,7 +12,8 @@ import DiscordProvider, { type DiscordProfile } from 'next-auth/providers/discor
 import GitHubProvider from 'next-auth/providers/github'
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
-import { type Account as DBAccount, type User as DBUser } from "~/__generated__/prisma";
+import type { Account as DBAccount, User as DBUser } from "~/__generated__/prisma";
+import type { OAuthProviderButtonStyles } from "next-auth/providers";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -120,10 +121,12 @@ export const authOptions = (ctx: {
       GitHubProvider({
         clientId: env.GITHUB_CLIENT_ID,
         clientSecret: env.GITHUB_CLIENT_SECRET,
+        style: { logo: '/github.svg', logoDark: '/github.svg' } as OAuthProviderButtonStyles,
       }),
       DiscordProvider({
         clientId: env.DISCORD_CLIENT_ID,
         clientSecret: env.DISCORD_CLIENT_SECRET,
+        style: { logo: '/discord.svg', logoDark: '/discord.svg' } as OAuthProviderButtonStyles,
       }),
       /**
        * ...add more providers here.
