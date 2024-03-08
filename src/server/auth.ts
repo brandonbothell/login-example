@@ -97,7 +97,7 @@ export const authOptions = (ctx: {
               // Disallow sign in with an unverified email
               return `/auth/linkaccount?error=${checkedProvider ?
                 encodeURIComponent('That account has an unverified email address.\nTry using a Google or GitHub account to sign in.') :
-                encodeURIComponent('The email address of that account couldn\'t be verified.\nPlease try using another service to sign in.')}`
+                encodeURIComponent('The email address of that account couldn\'t be verified.\nPlease try using another service to sign in before linking this account.')}`
           }
         }
 
