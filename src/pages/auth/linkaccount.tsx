@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { SocialIcon } from 'react-social-icons'
 import { getServerAuthSession } from '~/server/auth'
 import { prisma } from '~/server/db'
-import NetworkSvg from 'public/network.svg'
+import NetworkSvg from '~/assets/network.svg'
 
 const LinkAccount = ({ providers, alreadyLinkedProviders }:
   InferGetServerSidePropsType<typeof getServerSideProps>) => {

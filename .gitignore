@@ -5,10 +5,7 @@
 
 # dependencies
 /node_modules
-/.yarn/unplugged
-/.pnp
-.pnp.js
-/src/__generated__
+/.yarn/cache
 
 # testing
 /coverage

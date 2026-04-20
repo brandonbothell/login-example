@@ -12,8 +12,8 @@ import DiscordProvider, { type DiscordProfile } from 'next-auth/providers/discor
 import GitHubProvider from 'next-auth/providers/github'
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
-import type { Account as DBAccount, User as DBUser } from "~/__generated__/prisma";
-import type { OAuthProviderButtonStyles } from "next-auth/providers";
+import type { Account as DBAccount, User as DBUser } from "@prisma/client";
+import type { OAuthProviderButtonStyles } from "next-auth/providers/oauth";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`

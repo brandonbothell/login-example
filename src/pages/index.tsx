@@ -10,16 +10,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Login Example</title>
-        <meta name="description" content="An example login application" />
+        <title>Brandon&apos;s Bench</title>
+        <meta name="description" content="Brandon Bothell's public resume and personal development space" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-            Basic <span className="text-[hsl(280,100%,70%)]">Login</span> App
+            Brandon's <span className="text-[hsl(280,100%,70%)]">Bench</span>
           </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
               href="https://github.com/brandonbothell"
@@ -41,6 +41,18 @@ export default function Home() {
               <div className="text-lg">
                 Use Popyt for accessing data from the YouTube Data v3 API.
                 It&apos;s fast, simple, and has caching & pagination.
+              </div>
+            </Link>
+            <Link
+              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+              href="https://github.com/brandonbothell"
+              target="_blank"
+            >
+              <h3 className="text-2xl font-bold">Gander →</h3>
+              <div className="text-lg">
+                A home security camera application built for self-hosting
+                and easy code customization. Multiple camera feeds accessible through a
+                secured web interface.
               </div>
             </Link>
           </div>
