@@ -115,6 +115,8 @@ export const authOptions = (ctx: {
         }`
       },
     },
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore Improper typings
     adapter: PrismaAdapter(prisma),
     providers: [
       GoogleProvider({
