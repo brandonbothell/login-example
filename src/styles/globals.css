@@ -3,3 +3,7 @@
 .profile-pic {
   margin-right: 5px;
 }
+
+button:hover {
+  cursor: pointer;
+}

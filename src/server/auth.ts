@@ -28,6 +28,7 @@ declare module 'next-auth' {
       // ...other properties
       // role: UserRole;
     }
+    error?: string
   }
 
   // interface User {
@@ -47,13 +48,65 @@ export const authOptions = (ctx: {
 }): NextAuthOptions => {
   const options: NextAuthOptions = {
     callbacks: {
-      session: ({ session, user }) => ({
-        ...session,
-        user: {
-          ...session.user,
-          id: user.id,
-        },
-      }),
+      session: async ({ session, user }) => {
+        const googleAccount = await prisma.account.findFirst({
+          where: { userId: user.id, provider: 'google' },
+        })
+        if (googleAccount && googleAccount.refresh_token && googleAccount.expires_at! * 1000 < Date.now()) {
+        // If the access token has expired, try to refresh it
+          try {
+            // https://accounts.google.com/.well-known/openid-configuration
+            // We need the `token_endpoint`.
+            const response = await fetch('https://oauth2.googleapis.com/token', {
+              method: 'POST',
+              body: new URLSearchParams({
+                client_id: env.GOOGLE_CLIENT_ID,
+                client_secret: env.GOOGLE_CLIENT_SECRET,
+                grant_type: 'refresh_token',
+                refresh_token: googleAccount?.refresh_token,
+              }),
+            })
+
+            const tokensOrError = await response.json()
+
+            if (!response.ok) throw tokensOrError
+
+            const newTokens = tokensOrError as {
+              access_token: string
+              expires_in: number
+              refresh_token?: string
+            }
+
+            await prisma.account.update({
+              data: {
+                access_token: newTokens.access_token,
+                expires_at: Math.floor(Date.now() / 1000 + newTokens.expires_in),
+                refresh_token:
+                newTokens.refresh_token ?? googleAccount.refresh_token,
+              },
+              where: {
+                provider_providerAccountId: {
+                  provider: 'google',
+                  providerAccountId: googleAccount.providerAccountId,
+                },
+              },
+            })
+          }
+          catch (error) {
+            console.error('Error refreshing access_token', error)
+            // If we fail to refresh the token, return an error so we can handle it on the page
+            session.error = 'RefreshTokenError'
+          }
+        }
+
+        return ({
+          ...session,
+          user: {
+            ...session.user,
+            id: user.id,
+          },
+        })
+      },
       signIn: async ({ user, profile, account }) => {
         const existingUser = await prisma.user.findUnique({ where: { email: profile?.email } })
         const existingAccount = await prisma.account.findFirst({
@@ -120,6 +173,36 @@ export const authOptions = (ctx: {
     adapter: PrismaAdapter(prisma),
     providers: [
       GoogleProvider({
+        authorization: { params: { access_type: 'offline', prompt: 'consent' } },
+        token: 'https://oauth2.googleapis.com/token',
+        profile: async (profile, tokens) => {
+          if (tokens.refresh_token) {
+            const googleAccount = await prisma.account.findFirst({
+              where: { user: { email: profile.email }, provider: 'google' },
+            })
+
+            if (googleAccount) {
+              await prisma.account.update({
+                data: {
+                  refresh_token: tokens.refresh_token,
+                },
+                where: {
+                  provider_providerAccountId: {
+                    provider: 'google',
+                    providerAccountId: googleAccount.providerAccountId,
+                  },
+                },
+              })
+            }
+          }
+
+          return {
+            id: profile.sub,
+            name: profile.name,
+            email: profile.email,
+            image: profile.picture,
+          }
+        },
         clientId: env.GOOGLE_CLIENT_ID,
         clientSecret: env.GOOGLE_CLIENT_SECRET,
       }),

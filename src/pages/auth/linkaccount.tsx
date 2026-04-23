@@ -8,8 +8,7 @@ import { getServerAuthSession } from '~/server/auth'
 import { prisma } from '~/server/db'
 import NetworkSvg from '~/assets/network.svg'
 
-const LinkAccount = ({ providers, alreadyLinkedProviders }:
-InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const LinkAccount = ({ providers, alreadyLinkedProviders }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const availableProviders = providers
     ? Object.values(providers)
         .filter(provider => !alreadyLinkedProviders.includes(provider.id))
@@ -144,6 +143,10 @@ export async function getServerSideProps(ctx: {
   // To avoid an infinite loop!
   if (!session) {
     return { redirect: { destination: '/' } }
+  }
+
+  if (session?.error === 'RefreshTokenError') {
+    await signIn('google') // Force sign in to obtain a new set of access and refresh tokens
   }
 
   const providers = await getProviders()
