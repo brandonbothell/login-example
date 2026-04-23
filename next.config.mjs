@@ -2,7 +2,7 @@
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
  * for Docker builds.
  */
-await import("./src/env.mjs");
+await import('./src/env.mjs')
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -10,13 +10,11 @@ const config = {
     config,
     // { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return config
   },
 
@@ -29,8 +27,8 @@ const config = {
    * @see https://github.com/vercel/next.js/issues/41980
    */
   i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+    locales: ['en'],
+    defaultLocale: 'en',
   },
 
   images: {
@@ -55,6 +53,6 @@ const config = {
       },
     ],
   },
-};
+}
 
-export default config;
+export default config

@@ -1,19 +1,19 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { type GetServerSidePropsContext } from "next";
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { type GetServerSidePropsContext } from 'next'
 import {
   getServerSession,
   type NextAuthOptions,
   type DefaultSession,
   type Account,
   type User,
-} from "next-auth";
+} from 'next-auth'
 import GoogleProvider, { type GoogleProfile } from 'next-auth/providers/google'
 import DiscordProvider, { type DiscordProfile } from 'next-auth/providers/discord'
 import GitHubProvider from 'next-auth/providers/github'
-import { env } from "~/env.mjs";
-import { prisma } from "~/server/db";
-import type { Account as DBAccount, User as DBUser } from "@prisma/client";
-import type { OAuthProviderButtonStyles } from "next-auth/providers/oauth";
+import { env } from '~/env.mjs'
+import { prisma } from '~/server/db'
+import type { Account as DBAccount, User as DBUser } from '~/@prisma/client'
+import type { OAuthProviderButtonStyles } from 'next-auth/providers/oauth'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -21,13 +21,13 @@ import type { OAuthProviderButtonStyles } from "next-auth/providers/oauth";
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session extends DefaultSession {
-    user: DefaultSession["user"] & {
-      id: string;
+    user: DefaultSession['user'] & {
+      id: string
       // ...other properties
       // role: UserRole;
-    };
+    }
   }
 
   // interface User {
@@ -42,8 +42,8 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions = (ctx: {
-  req: GetServerSidePropsContext["req"];
-  res: GetServerSidePropsContext["res"];
+  req: GetServerSidePropsContext['req']
+  res: GetServerSidePropsContext['res']
 }): NextAuthOptions => {
   const options: NextAuthOptions = {
     callbacks: {
@@ -59,13 +59,13 @@ export const authOptions = (ctx: {
         const existingAccount = await prisma.account.findFirst({
           where: {
             provider: account?.provider,
-            providerAccountId: account?.providerAccountId
-          }
+            providerAccountId: account?.providerAccountId,
+          },
         })
 
         // Disallow sign up with another user's account
-        if (existingAccount &&
-          existingAccount.userId !== user.id) {
+        if (existingAccount
+          && existingAccount.userId !== user.id) {
           console.log('broken')
           return false
         }
@@ -80,24 +80,27 @@ export const authOptions = (ctx: {
           switch (account?.provider) {
             case 'github':
               // GitHub OAuth emails are always verified
-              checkedProvider = true
               return verifyEmail(account, user, existingAccount, existingUser)
 
             case 'discord':
               if (!checkedProvider && (profile as DiscordProfile).verified) {
                 return verifyEmail(account, user, existingAccount, existingUser)
-              } checkedProvider = true
+              }
+              checkedProvider = true
+              // Continue if unverified
 
             case 'google':
               if (!checkedProvider && (profile as GoogleProfile).email_verified) {
                 return verifyEmail(account, user, existingAccount, existingUser)
-              } checkedProvider = true
+              }
+              checkedProvider = true
+              // Continue if unverified
 
             default:
               // Disallow sign in with an unverified email
-              return `/auth/linkaccount?error=${checkedProvider ?
-                encodeURIComponent('That account has an unverified email address.\nTry using a Google or GitHub account to sign in.') :
-                encodeURIComponent('The email address of that account couldn\'t be verified.\nPlease try using another service to sign in before linking this account.')}`
+              return `/auth/linkaccount?error=${checkedProvider
+                ? encodeURIComponent('That account has an unverified email address.\nTry using a Google or GitHub account to sign in.')
+                : encodeURIComponent('The email address of that account couldn\'t be verified.\nPlease try using another service to sign in before linking this account.')}`
           }
         }
 
@@ -109,8 +112,8 @@ export const authOptions = (ctx: {
 
         // Disallow linking of accounts already linked to a user
         return `/auth/linkaccount?error=${encodeURIComponent('That account has already been linked to another user.\nIf you believe this is a mistake, contact us.')
-          }`
-      }
+        }`
+      },
     },
     adapter: PrismaAdapter(prisma),
     providers: [
@@ -141,7 +144,7 @@ export const authOptions = (ctx: {
   }
 
   return options
-};
+}
 
 async function verifyEmail(
   account: Account, user: User,
@@ -149,19 +152,22 @@ async function verifyEmail(
   if (existingUser && !existingUser.emailVerified) {
     return prisma.user.update({
       where: { id: existingUser.id },
-      data: { emailVerified: new Date() }
+      data: { emailVerified: new Date() },
     }).then(() => true).catch(() => false)
-  } else if (!existingUser && !existingAccount) {
+  }
+  else if (!existingUser && !existingAccount) {
     const newUser = await prisma.user.create({
-      data: { ...user, emailVerified: new Date(), id: undefined }
+      data: { ...user, emailVerified: new Date(), id: undefined },
     })
 
     return prisma.account
       .create({ data: { ...account, userId: newUser.id } })
       .then(() => true).catch(() => false)
-  } else if (existingUser?.emailVerified) {
+  }
+  else if (existingUser?.emailVerified) {
     return true
-  } else {
+  }
+  else {
     return false
   }
 }
@@ -172,8 +178,8 @@ async function verifyEmail(
  * @see https://next-auth.js.org/configuration/nextjs
  */
 export const getServerAuthSession = (ctx: {
-  req: GetServerSidePropsContext["req"];
-  res: GetServerSidePropsContext["res"];
+  req: GetServerSidePropsContext['req']
+  res: GetServerSidePropsContext['res']
 }) => {
-  return getServerSession(ctx.req, ctx.res, authOptions(ctx));
-};
+  return getServerSession(ctx.req, ctx.res, authOptions(ctx))
+}

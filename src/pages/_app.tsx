@@ -1,9 +1,9 @@
-import { type Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
-import { type AppType } from "next/app";
-import { api } from "~/utils/api";
+import { type Session } from 'next-auth'
+import { SessionProvider } from 'next-auth/react'
+import { type AppType } from 'next/app'
+import { api } from '~/utils/api'
 import NextNProgress from 'nextjs-progressbar'
-import "~/styles/globals.css";
+import '~/styles/globals.css'
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -14,7 +14,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <NextNProgress color="#CC66FF" />
       <Component {...pageProps} />
     </SessionProvider>
-  );
-};
+  )
+}
 
-export default api.withTRPC(MyApp);
+export default api.withTRPC(MyApp)
