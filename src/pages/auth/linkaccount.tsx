@@ -19,7 +19,7 @@ const LinkAccount = ({ providers, alreadyLinkedProviders }: InferGetServerSidePr
   const [message, setMessage] = useState(params.get('message')?.split('\n'))
 
   return (
-    <main className="flex min-h-screen flex-col sm:flex-row items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+    <main className="flex min-h-screen flex-col sm:flex-row items-center justify-center bg-linear-to-b from-[#2e026d] to-[#15162c]">
       {/* Left column container with background */}
       <div
         className="mb-12 sm:mb-0 w-3/5 h-3/5 sm:w-2/5 sm:h-2/5 lg:w-1/3

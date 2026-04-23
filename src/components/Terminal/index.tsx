@@ -395,7 +395,7 @@ ${toDelete ? `(attempted deleting '${toDelete}')` : ''}` }
           <span className="ml-2 select-none">Terminal</span>
         </div>
       </div>
-      <div style={{ whiteSpace: 'pre-wrap' }} className="p-2 h-full overflow-y-auto bg-black text-green-400 font-mono text-sm" ref={scrollContainerRef} onClick={handleClick}>
+      <div style={{ whiteSpace: 'pre-wrap', cursor: 'text' }} className="p-2 h-full overflow-y-auto bg-black text-green-400 font-mono text-sm" ref={scrollContainerRef} onClick={handleClick}>
         <br />
         {history.map((line, index) => (
           <div key={index} className="mb-1 cursor-text" onClick={e => e.stopPropagation()}>
