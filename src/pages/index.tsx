@@ -87,7 +87,7 @@ function AuthShowcase() {
       <p className="text-center text-2xl text-white">
         {session.status !== 'unauthenticated' && (
           <span>
-            Logged in as
+            {session.status === 'authenticated' && 'Logged in as'}
             {' '}
             {session.status === 'authenticated' && session.data.user.image
               && (
